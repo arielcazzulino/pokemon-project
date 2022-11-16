@@ -1,0 +1,19 @@
+.cardContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.imgContainer {
+    background-color: #343434;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.img{
+    width: 200px;
+    height: 300px;
+    object-fit: contain;
+}

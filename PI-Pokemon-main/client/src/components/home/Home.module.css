@@ -1,0 +1,63 @@
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.paginationButton{
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 84, 22);
+    border-color: rgba(0, 0, 0, 0);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.paginationButton:hover{
+    color:red;
+    font-weight: bolder;
+}
+
+.offPaginationButton{
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 0);
+    border-color: rgba(0, 0, 0, 0);
+    font-size: 20px;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);  
+}
+
+.cardArea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filterBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: start;
+    margin-bottom: 30px;
+    background-color: #f2f2f2;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.filterSearch{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.filterSelects{
+    width: 100px;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align-last: center;
+}

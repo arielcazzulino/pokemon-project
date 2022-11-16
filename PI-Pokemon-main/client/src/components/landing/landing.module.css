@@ -1,0 +1,35 @@
+.canvas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url('https://i.pinimg.com/originals/1e/69/e2/1e69e2de333674d617ae017d9e57360d.jpg'); 
+    background-size: contain;
+    height: 100vh;
+    width: 100vw;  
+}
+
+.h1 {
+   font-size: 50px;
+   color: #000000;
+   text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.507);
+}
+
+.button {
+    width: 400px;
+    height: 50px;
+    color: white;
+    border: 0px;
+    font-size: 25px;
+    border-radius: 50px;
+    background-color: #ff7400;
+    border-color: #ff7400;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #ff8a2a;
+    margin-top: 3px;
+    width: 390px;
+    height: 47px;
+}
