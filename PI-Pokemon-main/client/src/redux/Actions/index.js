@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POKEMONS, FILTER_TYPE, GET_POKEMON_TYPE, FILTER_CREATED,FILTER_NAME, FILTER_ATTACK, GET_POKEMON_NAME} from './actionsType'
+import { GET_POKEMONS, FILTER_TYPE, GET_POKEMON_TYPE, FILTER_CREATED,FILTER_NAME, FILTER_ATTACK, GET_POKEMON_NAME, GET_POKEMON_DETAIL} from './actionsType'
 
 export function getPokemons(){
     return async function(dispatch){
@@ -35,6 +35,16 @@ export function getPokemonsName(payload){
         catch(err){
             console.error(err)
         }
+    }
+}
+
+export function getPokemonDetail(payload){
+    return async function (dispatch){
+        let pokesDetail = await axios(`http://localhost:3001/pokemons/${payload}`)
+        return dispatch ({
+            type: GET_POKEMON_DETAIL,
+            payload: pokesDetail.data
+        })
     }
 }
 

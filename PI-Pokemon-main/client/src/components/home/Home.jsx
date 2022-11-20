@@ -8,6 +8,7 @@ import {Card} from '../card/Card'
 import {NavBar} from '../nav/Nav'
 import {Pagination} from '../paginate/Paginate'
 import {Loading} from '../loading/Loading'
+import {Footer} from '../footer/Footer'
 import Style from './Home.module.css'
 
 
@@ -81,7 +82,7 @@ export function Home (){
     }
 
     return (
-        <div>
+        <div className={Style.all}>
             <NavBar/>
             {/* filters section*/}
             
@@ -135,7 +136,7 @@ export function Home (){
                         {
                             pokesInCurrentPage?.map(el => {
                                 let pokeTypes = el.types ? el.types.map(el=> el.name) : el.tipos.map(el=>el.name)
-                                return (<Card key={el.id} name={el.name} image={el.image} types={pokeTypes} />)
+                                return (<Link to={`/pokemons/${el.id}`}><Card key={el.id} name={el.name} image={el.image} types={pokeTypes} /> </Link>)
                             })  
                         }
                     </div>
@@ -148,9 +149,10 @@ export function Home (){
                         <button onClick={handleNext}  
                         className={pokesInCurrentPage.length !== 12 ? Style.offPaginationButton : Style.paginationButton}> {next} </button>
                     </div>
+                    <Footer/>
                 </div>
             }
-
+            
         </div> 
     ) 
 }

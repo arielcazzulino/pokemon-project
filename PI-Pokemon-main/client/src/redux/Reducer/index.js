@@ -1,9 +1,10 @@
-import { GET_POKEMONS, FILTER_TYPE, GET_POKEMON_TYPE, FILTER_CREATED, FILTER_NAME, FILTER_ATTACK, GET_POKEMON_NAME, POST_POKEMONS } from '../Actions/actionsType'
+import { GET_POKEMONS, FILTER_TYPE, GET_POKEMON_TYPE, FILTER_CREATED, FILTER_NAME, FILTER_ATTACK, GET_POKEMON_NAME, POST_POKEMONS, GET_POKEMON_DETAIL } from '../Actions/actionsType'
 
 const initialState = {
     pokemons : [],
     allPokemons: [],
     types: [],
+    detail: []
 }
 
 export function rootReducer(state = initialState, action){
@@ -25,6 +26,12 @@ export function rootReducer(state = initialState, action){
             return{
                 ...state,
                 pokemons: action.payload
+            }    
+
+        case GET_POKEMON_DETAIL:
+            return{
+                ...state,
+                detail: action.payload
             }    
         
         case POST_POKEMONS:
@@ -62,32 +69,32 @@ export function rootReducer(state = initialState, action){
         
         case FILTER_NAME:
             let allPokemons3 = state.allPokemons;
-            let sorted = action.payload === 'A-Z' ?
-            allPokemons3.sort(function(a, b){
-                if(a.name > b.name) return 1;
-                if(b.name > a.name) return -1;
-                return 0}) :
-              allPokemons3.sort(function(a, b){
-                if(a.name < b.name) return 1;
-                if(b.name < a.name) return -1;
-                return 0})
-            
+            let sortedName = action.payload === 'A-Z' ?
+                allPokemons3.sort(function(a, b){
+                    if(a.name > b.name) return 1;
+                    if(b.name > a.name) return -1;
+                    return 0}) :
+                  allPokemons3.sort(function(a, b){
+                    if(a.name < b.name) return 1;
+                    if(b.name < a.name) return -1;
+                    return 0})
+            let retVerification = action.payload === "defaultData" ? allPokemons3 : sortedName
             return {
                 ...state,
-                pokemons: sorted
+                pokemons: retVerification
             }
         
         case FILTER_ATTACK: 
             let allPokemons4 = state.allPokemons;
             let sortedAttack = action.payload === "asc" ?
-            allPokemons4.sort(function(a, b){
-                    if(a.attack > b.attack) return 1;
-                    if(b.attack > a.attack) return -1;
-                    return 0}) :
                 allPokemons4.sort(function(a, b){
-                    if(a.attack < b.attack) return 1;
-                    if(b.attack < a.attack) return -1;
-                    return 0})
+                        if(a.attack > b.attack) return 1;
+                        if(b.attack > a.attack) return -1;
+                        return 0}) :
+                    allPokemons4.sort(function(a, b){
+                        if(a.attack < b.attack) return 1;
+                        if(b.attack < a.attack) return -1;
+                        return 0})
             let verification = action.payload === 'default' ? allPokemons4 : sortedAttack
         return{
             ...state,

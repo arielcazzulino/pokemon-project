@@ -1,0 +1,122 @@
+.mainContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-image: url('../img/pattern.jpg');
+}
+
+.formConatiner{
+    background-color: #f2f2f2;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 50px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.imgAndFormContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(5px 5px 12px rgb(49, 49, 49))
+}
+
+.img{
+    max-width: 200px;
+}
+
+
+.h3{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    color: red;
+    text-shadow: #f2f2f2;
+}
+
+.inputAndLabelContainer{
+    margin-bottom: 10px;
+}
+
+.input{
+    margin-top: 5px;
+    padding: 10px;
+    width: 94%;
+    border-radius: 10px;
+}
+
+.select{
+    margin-top: 5px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.selectedTypes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.typesTags{
+    display: flex;
+    flex-direction: row;
+    width:100px;
+    background-color: gold;
+    justify-content: space-evenly;
+    border-radius: 10px;
+}
+
+.closeTag:hover{
+    color:red;
+    cursor: pointer;
+    font-weight: 700;
+    margin-left: -5px;
+}
+
+.divAlert{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.iconAlert{
+    max-width: 20px;
+    margin-right: 5px;
+}
+
+.submit{
+    height: 39px;
+    border-radius: 20px;
+    border-color: rgba(250, 235, 215, 0);
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.submit:hover{
+    background-color: rgb(255, 60, 60);
+}
+
+.submitDisabled {
+    height: 39px;
+    border-radius: 20px;
+    border-color: rgba(118, 118, 118, 0.3);
+    background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3));
+    color:-internal-light-dark(rgb(84, 84, 84), rgb(170, 170, 170));
+    cursor: not-allowed;
+}

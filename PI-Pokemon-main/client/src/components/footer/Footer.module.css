@@ -1,0 +1,28 @@
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: navy	;
+    max-height: 8vh;
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+   
+}
+
+.p{
+    position: static;
+    font-size: 25px;
+    color: white;
+}
+
+.a{
+    color: #FFD700	;
+    text-decoration: none;    
+}
+
+.a:hover{
+    color: yellow;
+    text-decoration: none;
+}
