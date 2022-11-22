@@ -7,7 +7,7 @@ router.get('/:id', async (req, res)=>{
     
     if(id){
         let pokeId = allPokemons.filter(el => el.id == id)
-        console.log(`esto es pokeId al poner === ${pokeId}`)
+        
         pokeId.length ?
         res.status(200).send(pokeId) :
         res.status(404).send('No existe ningun pokemon con ese id')

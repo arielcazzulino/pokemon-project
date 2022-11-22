@@ -24,7 +24,7 @@ router.post('/', async (req, res)=>{
         speed,
         height,
         weight,
-        image: image ? image : 'https://www.pokemoncenter.com/static/images/no-image.jpg',
+        image: image ? image : 'https://elvortex.com/wp-content/uploads/2018/03/HddtBOT-e1520478229723.png',
         dbCreated
        })
 

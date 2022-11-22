@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import {useDispatch } from 'react-redux';
 import { getPokemonsName } from '../../redux/Actions';
@@ -17,9 +17,9 @@ export function SearchBar(){
     function handleSubmit(e){
         e.preventDefault();
         !name.length && alert ('Enter a name in the search form') 
-        dispatch(getPokemonsName(name));
         setName('')
-    }
+        dispatch(getPokemonsName(name));
+    } 
 
     return(
         <div className={Styles.container}>

@@ -10,8 +10,10 @@ export function Card({name, image, types}){
             <div className={Styles.imgContainer}>
                 <img src={image} alt='Pokemon IMG not found' className={Styles.img}/>
             </div>
-                <h3>{name}</h3>
-                <p>{typeRet}</p>
+            <div className={Styles.infoContainer}>
+                <h3 className={Styles.h3}>{name}</h3>
+                <p className={Styles.p}>{typeRet}</p>
+            </div>
         </div>
     )
 }

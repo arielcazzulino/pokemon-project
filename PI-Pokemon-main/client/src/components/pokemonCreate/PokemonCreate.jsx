@@ -6,7 +6,6 @@ import {NavBar} from '../nav/Nav'
 import Styles from './Styles.module.css'
 import pokeball from '../img/pokeBall2.png'
 import iconAlert from '../img/iconAlert.png'
-import {Footer} from '../footer/Footer'
 
 function validate(input){
     let errors = {};
@@ -220,7 +219,6 @@ export function PokemonCreate(){
                     </div> 
                 </div> 
             </div>
-            <Footer/>
         </>    
     )
 }

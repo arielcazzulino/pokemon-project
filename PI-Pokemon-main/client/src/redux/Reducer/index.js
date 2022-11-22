@@ -1,10 +1,11 @@
-import { GET_POKEMONS, FILTER_TYPE, GET_POKEMON_TYPE, FILTER_CREATED, FILTER_NAME, FILTER_ATTACK, GET_POKEMON_NAME, POST_POKEMONS, GET_POKEMON_DETAIL } from '../Actions/actionsType'
+import { GET_POKEMONS, FILTER_TYPE, GET_POKEMON_TYPE, FILTER_CREATED, FILTER_NAME, FILTER_ATTACK, GET_POKEMON_NAME, POST_POKEMONS, GET_POKEMON_DETAIL, CLEAN_DETAIL, ERROR_SEARCH_POKEMON, DELETE_POKEMON } from '../Actions/actionsType'
 
 const initialState = {
     pokemons : [],
     allPokemons: [],
     types: [],
-    detail: []
+    detail: [],
+    errorSearchPokemon : false,
 }
 
 export function rootReducer(state = initialState, action){
@@ -37,6 +38,11 @@ export function rootReducer(state = initialState, action){
         case POST_POKEMONS:
             return{
               ...state
+            }
+        
+        case DELETE_POKEMON:
+            return{
+                ...state
             }
         
         //filters
@@ -100,6 +106,20 @@ export function rootReducer(state = initialState, action){
             ...state,
             pokemons: verification
         }
+
+        //error
+        case ERROR_SEARCH_POKEMON:
+            return {
+                ...state,
+                errorSearchPokemon : true
+            }
+
+        //reset
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+                detail: []
+            }
             
         default: 
         return {

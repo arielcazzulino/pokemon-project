@@ -3,15 +3,29 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url('https://i.pinimg.com/originals/1e/69/e2/1e69e2de333674d617ae017d9e57360d.jpg'); 
-    background-size: contain;
+    background-image: url('../img/landingBackground.jpg'); 
+    background-size: cover;
     height: 100vh;
     width: 100vw;  
 }
 
+.img{
+    min-width: 200px;
+    margin-top: -200px;
+}
+
+.textAndBtn{
+    margin-top: -50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .h1 {
    font-size: 50px;
-   color: #000000;
+   font-weight: 400;
+   text-transform:uppercase;
+   color: white;
    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.507);
 }
 

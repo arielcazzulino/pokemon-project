@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POKEMONS, FILTER_TYPE, GET_POKEMON_TYPE, FILTER_CREATED,FILTER_NAME, FILTER_ATTACK, GET_POKEMON_NAME, GET_POKEMON_DETAIL} from './actionsType'
+import { GET_POKEMONS, FILTER_TYPE, GET_POKEMON_TYPE, FILTER_CREATED,FILTER_NAME, FILTER_ATTACK, GET_POKEMON_NAME, GET_POKEMON_DETAIL, CLEAN_DETAIL, ERROR_SEARCH_POKEMON, DELETE_POKEMON} from './actionsType'
 
 export function getPokemons(){
     return async function(dispatch){
@@ -33,7 +33,9 @@ export function getPokemonsName(payload){
             })
         }
         catch(err){
-            console.error(err)
+            return dispatch({   //nuevo
+                type: ERROR_SEARCH_POKEMON
+            })
         }
     }
 }
@@ -54,6 +56,17 @@ export function postPokemon(payload){
       return post
     }
   } 
+
+export function deletePokemon (payload){
+    return async function (dispatch){
+        
+        await axios.delete(`http://localhost:3001/pokemons/${payload}`)
+        
+        return dispatch ({
+            type: DELETE_POKEMON
+        })
+    }
+}
 
 //Filters
 export function filterByType(payload){
@@ -84,3 +97,10 @@ export function filterByAttack(payload){
     }
 }
 
+// reset
+
+export function cleanDetail(){
+    return{
+        type: CLEAN_DETAIL,
+    }
+}

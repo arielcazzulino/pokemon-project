@@ -9,7 +9,7 @@ export function NavBar (){
         <div className={Styles.navContainer}>
             <div className={Styles.logo_tittle}>
                 <Link to='/home'>    
-                    <img src={logo} alt="Logo de Doggypedia" className={Styles.img}/>        
+                    <img src={logo} alt="Logo pokémon" className={Styles.img}/>        
                 </Link>
             </div>
             

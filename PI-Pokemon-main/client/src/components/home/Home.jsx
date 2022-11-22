@@ -3,12 +3,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { Link } from "react-router-dom";
-import {getPokemons, getPokemonType, filterByType, filterCreated, filterByName, filterByAttack } from '../../redux/Actions/index';
+import {getPokemons, getPokemonType, filterByType, filterCreated, filterByName, filterByAttack, cleanDetail } from '../../redux/Actions/index';
 import {Card} from '../card/Card'
 import {NavBar} from '../nav/Nav'
 import {Pagination} from '../paginate/Paginate'
 import {Loading} from '../loading/Loading'
-import {Footer} from '../footer/Footer'
+import {Error404} from '../404/404' 
 import Style from './Home.module.css'
 
 
@@ -16,12 +16,14 @@ import Style from './Home.module.css'
 export function Home (){
 
     const dispatch = useDispatch();
-    const allPokemons = useSelector(state => state.pokemons) //useSelector me trae todo lo que está en el initial state, en este caso, todo lo que está en pokemons
+    const allPokemons = useSelector(state => state.pokemons)
     const typesOfPokemon = useSelector(state => state.types)
+    const errorSearchPokemon = useSelector(state => state.errorSearchPokemon)
 
     useEffect(()=>{
         dispatch(getPokemons());
         dispatch(getPokemonType());
+        dispatch(cleanDetail());
     }, [dispatch])
 
 
@@ -81,80 +83,87 @@ export function Home (){
         setOrder(`Ordenado ${e.target.value}`)
     }
 
-    return (
-        <div className={Style.all}>
-            <NavBar/>
-            {/* filters section*/}
-            
-            <div className={Style.filterBar}>
-                <div className={Style.filterSearch}>
-                    <p>Filter by <b>alphabetical order:</b></p>
-                        <select onChange={(e) => handleFilterName(e)} className={Style.filterSelects}>
-                              <option value="A-Z">A-Z</option>
-                              <option value="Z-A">Z-A</option>
-                        </select>
-                </div>
-                
-                <div className={Style.filterSearch}>
-                    <p>Filter by <b>attack:</b></p>
-                        <select onChange={(e) => handleFilterAttack(e)} className={Style.filterSelects}>
-                          <option value="default">Attack </option>
-                          <option value="desc">Highest </option>
-                          <option value="asc">Lowest </option>
-                        </select>
-                </div>
-                
-                <div className={Style.filterSearch}>
-                    <p>Filter by <b>type:</b></p>
-                      <select onChange={(e) => handleFilterTypes(e)} className={Style.filterSelects}>
-                        <option value='All'>All</option>
-                        {
-                          typesOfPokemon?.map(type => (
-                            <option value={type.name} key={type.id}> {type.name} </option>
-                            ))
-                        }
-                       </select> 
+
+    if(errorSearchPokemon === false){
+        return (
+            <div className={Style.all}>
+                <NavBar/>
+                {/* filters section*/}
+
+                <div className={Style.filterBar}>
+                    <div className={Style.filterSearch}>
+                        <p>Filter by <b>alphabetical order:</b></p>
+                            <select onChange={(e) => handleFilterName(e)} className={Style.filterSelects}>
+                                  <option value="A-Z">A-Z</option>
+                                  <option value="Z-A">Z-A</option>
+                            </select>
+                    </div>
+
+                    <div className={Style.filterSearch}>
+                        <p>Filter by <b>attack:</b></p>
+                            <select onChange={(e) => handleFilterAttack(e)} className={Style.filterSelects}>
+                              <option value="default">Attack </option>
+                              <option value="desc">Highest </option>
+                              <option value="asc">Lowest </option>
+                            </select>
+                    </div>
+
+                    <div className={Style.filterSearch}>
+                        <p>Filter by <b>type:</b></p>
+                          <select onChange={(e) => handleFilterTypes(e)} className={Style.filterSelects}>
+                            <option value='All'>All</option>
+                            {
+                              typesOfPokemon?.map(type => (
+                                <option value={type.name} key={type.id}> {type.name} </option>
+                                ))
+                            }
+                           </select> 
+                    </div>
+
+                    <div className={Style.filterSearch}>    
+                        <p>Filter by <b>API or DB:</b></p>
+                            <select onChange={ (e) => handleFilterCreated(e)} className={Style.filterSelects}> 
+                              <option value="all">All</option>
+                              <option value="api">API</option>
+                              <option value="created">User Created</option>
+                            </select>
+                    </div>
                 </div>
 
-                <div className={Style.filterSearch}>    
-                    <p>Filter by <b>API or DB:</b></p>
-                        <select onChange={ (e) => handleFilterCreated(e)} className={Style.filterSelects}> 
-                          <option value="all">All</option>
-                          <option value="api">API</option>
-                          <option value="created">User Created</option>
-                        </select>
-                </div>
-            </div>
-
-            {/* loading, card && pagination */}
-            
-            { allPokemons.length === 0 ?
-                <Loading/> :
-            
-                <div className={Style.cardArea}> 
-                    <div className={Style.card}>
-                        {
-                            pokesInCurrentPage?.map(el => {
-                                let pokeTypes = el.types ? el.types.map(el=> el.name) : el.tipos.map(el=>el.name)
-                                return (<Link to={`/pokemons/${el.id}`}><Card key={el.id} name={el.name} image={el.image} types={pokeTypes} /> </Link>)
-                            })  
-                        }
-                    </div>
-                    
-                    
-                    <div className={Style.pagination}>
-                        <button onClick={handlePrev} 
-                        className={currentPage === 1 ? Style.offPaginationButton : Style.paginationButton}> {prev} </button>
-                        <Pagination pokemonsInPage={pokemonsInPage} allPokemons={allPokemons.length} paginated={paginated} currentPage={currentPage}/>
-                        <button onClick={handleNext}  
-                        className={pokesInCurrentPage.length !== 12 ? Style.offPaginationButton : Style.paginationButton}> {next} </button>
-                    </div>
-                    <Footer/>
-                </div>
-            }
-            
-        </div> 
-    ) 
+                {/* loading, card && pagination */}
+                        
+                {allPokemons.length === 0 ?
+                    <Loading/> :
+                        <div className={Style.cardArea}> 
+                            <div className={Style.card}>
+                                {
+                                    pokesInCurrentPage?.map(el => {
+                                        let pokeTypes = el.types ? el.types.map(el=> el.name) : el.tipos.map(el=>el.name)
+                                        return (<Link to={`/pokemons/${el.id}`}><Card key={el.id} name={el.name} image={el.image} types={pokeTypes} /> </Link>)
+                                    })  
+                                }
+                            </div>
+                            
+                            
+                            <div className={Style.pagination}>
+                                <button onClick={handlePrev} 
+                                className={currentPage === 1 ? Style.offPaginationButton : Style.paginationButton}> {prev} </button>
+                                <Pagination pokemonsInPage={pokemonsInPage} allPokemons={allPokemons.length} paginated={paginated} currentPage={currentPage}/>
+                                <button onClick={handleNext}  
+                                className={pokesInCurrentPage.length !== 12 ? Style.offPaginationButton : Style.paginationButton}> {next} </button>
+                            </div>      
+                        </div>
+                }     
+            </div> 
+        ) 
+    }
+    else if(errorSearchPokemon === true){
+        return(
+            <>
+                <NavBar/>
+                <Error404/>
+            </>
+        )
+    }
 }
-
 export default Home;

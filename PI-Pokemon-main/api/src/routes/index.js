@@ -5,12 +5,13 @@ const pokemonRoutes = require('./getPokemons');
 const pokemonIdRoutes = require('./getPokemonsID')
 const pokemonPost = require('./postPokemon')
 const types = require('./getTypes')
+const deletePokemon = require('./deletePokemon')
 
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.use('/pokemons', pokemonRoutes, pokemonIdRoutes, pokemonPost);
+router.use('/pokemons', pokemonRoutes, pokemonIdRoutes, pokemonPost, deletePokemon);
 router.use('/types', types); 
 
 

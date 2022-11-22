@@ -1,0 +1,101 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+}
+
+.img{
+    max-width: 200px;
+}
+
+.imgID{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.data{
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #343434;
+    width: 100%;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left: 20px;
+    border-left: 3px goldenrod solid;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.card{
+    background-color: #242424;
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    border-radius:50px;
+}
+
+.pointsContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.h1{
+    font-size: 50px;
+    font-weight: 400;
+    margin: 0px;   
+    text-transform: capitalize;
+}
+
+.types{
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    color: gold;
+}
+
+.div1{
+    margin-right: 50px;
+}
+
+.buttonDelete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    height: 60px;
+    border-radius: 20px;
+    border-color: rgba(250, 235, 215, 0);
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.buttonDelete:hover{
+    background-color: rgb(255, 60, 60);
+}
+
+.deleteIcon{
+    max-height: 30px;
+    margin-top: -5px;
+    margin-right: 5px;
+}
+
+.ignore{
+    display: none;
+}

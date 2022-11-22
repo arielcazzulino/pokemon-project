@@ -25,6 +25,10 @@
     max-height: 13vh;
 }
 
+.img:hover {
+    scale: 1.1;
+}
+
 .button{
     height: 39px;
     border-radius: 20px;

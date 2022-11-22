@@ -1,0 +1,31 @@
+.allErrorContain{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+}
+
+.tittleAndP{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 50px;
+}
+
+.img{
+    max-width: 500px;
+    margin-left: 50px;
+}
+
+.h1{
+    font-size: 150px;
+    font-weight: 400;
+    color: gold;
+    margin: 0px;
+}
+
+.p{
+    font-weight: 600;
+    font-size: 20px;
+}

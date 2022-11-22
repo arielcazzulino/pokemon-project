@@ -1,3 +1,7 @@
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+
 .cardContainer{
     display: flex;
     align-items: center;
@@ -6,14 +10,48 @@
     padding: 50px;
 }
 
+.cardContainer:hover{
+    scale: 1.1;
+}
+
 .imgContainer {
     background-color: #343434;
     padding-left: 100px;
     padding-right: 100px;
+    display: flex;
+    justify-content: end;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
 
 .img{
     width: 200px;
     height: 300px;
     object-fit: contain;
+}
+
+.infoContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    background-color: #242424;
+    width:100%;
+    border-top: 0.1px goldenrod solid;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.h3{
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}
+
+.p{
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 3px;
+    margin-bottom: 30px;
 }
